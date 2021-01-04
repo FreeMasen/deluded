@@ -1,0 +1,16 @@
+[package]
+name = "deluded"
+version = "0.1.0"
+authors = ["rfm <r@robertmasen.pizza>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lex_lua = { path = "../lex_lua" }
+tera = "1"
+pulldown-cmark = "0.8"
+bstr = "0.2"
+serde = { version = "1.0", features = ["derive"] }
+log = "0.4"
+pretty_env_logger = "0.4"

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>
+        {% if project.name %}
+            {{project.name}}
+        {% else %}
+            Deluded Docs
+        {% endif %}
+    </title>
+    {% block head %}
+    {% endblock head %}
+</head>
+
+<body>
+    <nav class="nav-sidebar">
+        {% if project.name %}
+            <h1>{{project.name}}</h1>
+        {% endif %}
+        <hr />
+        <span class="module-list-title">
+            Modules
+        </span>
+        <li class="module-list">
+            {% for mod in project.modules %}
+            <li class="module-list-entry">    
+                <a href="/{{mod.name}}">{{mod.name}}</a>
+            </li>
+            {% endfor %}
+        </li>
+    </nav>
+    <main>
+        {% block content %}
+
+        {% endblock content %}
+    </main>
+</body>
+
+</html>

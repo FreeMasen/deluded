@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="project-name">
+    {{project.name}}
+</h2>
+<hr/>
+{% if project.modules | length > 0 %}
+<h3>Modules</h3>
+<li class="export-list">
+    {% for mod in project.modules %}
+        <li>
+            <a href="{{mod.path}}">
+                {{mod.name}}
+            </a>
+        </li>
+    {% endfor %}
+</li>
+{% endif %}
+{% if project.exports.classes | length > 0 %}
+<h3>Classes</h3>
+<li class="export-list">
+    {% for class in project.exports.classes %}
+        <li>
+            <a href="{{class.path}}">
+                {{class.name}}
+            </a>
+        </li>
+    {% endfor %}
+</li>
+{% endif %}
+{% if project.exports.functions | length > 0 %}
+<h3>Functions</h3>
+<li class="export-list">
+    {% for func in project.exports.functions %}
+        <li>
+            <a href="{{func.path}}">
+                {{func.name}}
+            </a>
+        </li>
+    {% endfor %}
+</li>
+{% endif %}
+{% if project.exports.variables | length > 0 %}
+<h3>Variables</h3>
+<li class="export-list">
+    {% for v in project.exports.variables %}
+        <li>
+            <span class="var-name">{{va.name}}:</span>
+            {%- if v.ty.path -%}
+            <a href="{{v.ty.path}}">
+                {{v.type.name}}
+            </a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</li>
+{% endif %}
+
+{% endblock content %}

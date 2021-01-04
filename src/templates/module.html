@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+{% if module.modules | length > 0 %}
+<h3>Modules</h3>
+<li class="export-list">
+    {% for mod in module.modules %}
+        <li>
+            <a href="{{mod.path}}">
+                {{mod.name}}
+            </a>
+        </li>
+    {% endfor %}
+</li>
+{% endif %}
+{% if module.exports.classes | length > 0 %}
+<h3>Classes</h3>
+<li class="export-list">
+    {% for class in module.exports.classes %}
+        <li>
+            <a href="{{class.path}}">
+                {{class.name}}
+            </a>
+        </li>
+    {% endfor %}
+</li>
+{% endif %}
+{% if module.exports.functions | length > 0 %}
+<h3>Functions</h3>
+<li class="export-list">
+    {% for func in module.exports.functions %}
+        <li>
+            <a href="{{func.path}}">
+                {{func.name}}
+            </a>
+        </li>
+    {% endfor %}
+</li>
+{% endif %}
+{% if module.exports.variables | length > 0 %}
+<h3>Variables</h3>
+<li class="export-list">
+    {% for v in module.exports.variables %}
+        <li>
+            <span class="var-name">{{va.name}}:</span>
+            {%- if v.ty.path -%}
+            <a href="{{v.ty.path}}">
+                {{v.type.name}}
+            </a>
+            {% endif %}
+        </li>
+    {% endfor %}
+</li>
+{% endif %}
+
+{% endblock content %}
